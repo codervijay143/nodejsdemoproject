@@ -3,24 +3,27 @@ const cors = require("cors");
 
 const app = express();
 
-app.use(
-  cors({
-    origin: "https://reactjsdemoproject.vercel.app/",
-  }),
-);
+// ✅ CORS FIX (important)
+app.use(cors({
+  origin: "*",
+  methods: ["GET","POST","PUT","DELETE"],
+  credentials: true
+}));
+
 app.use(express.json());
 
+app.get("/", (req, res) => {
+  res.send("Backend working");
+});
+
 app.get("/api/message", (req, res) => {
-  res.json({
-    message: "Backend connected successfully 🚀",
-  });
+  res.json({ message: "API working from backend" });
 });
 
 app.get("/api/users", (req, res) => {
   res.json([
     { id: 1, name: "Vijay" },
-    { id: 2, name: "React" },
-    { id: 3, name: "Node" },
+    { id: 2, name: "Kumar" }
   ]);
 });
 
