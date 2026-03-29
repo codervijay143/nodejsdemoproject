@@ -5,7 +5,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "https://react-frontend.vercel.app",
+    origin: "https://reactjsdemoproject.vercel.app/",
   }),
 );
 app.use(express.json());
